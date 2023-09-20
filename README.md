@@ -2,13 +2,17 @@
 
 To run this app in local machine you need pre-installed poetry and docker.
 ## Clone repository from GitHub
-- ```$ git clone ``` 
+- ```$ git clone ```
+- ```$ cd DocuSketchTest_FastApi ```
 ## Install dependencies
 - ```$ poetry install```
 ## Create dotenv file with db and web credentials by example in .env.template
-- ```$ > config/.env```
+- ```$ make create_dotenv```
 ## Up Postgresql database container
 - ```$ make up```
+## Make migrations
+- ```$ make init_db```
+## Import data to Postgresql server
+- ```$ make import```
 ## Start application
-- ```$ cd source```
-- ```$ poetry run uvicorn main:app --reload```
+- ```$ make startapp```

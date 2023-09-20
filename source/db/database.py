@@ -1,10 +1,17 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from config.settings import POSTGRES_URL
+from typing import Generator
 
+# POSTGRES sync engine
 engine = create_engine(url=POSTGRES_URL)
 local_session = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
-# SQLAlchemy base model
-Base = declarative_base()
+
+# db dependency
+def get_db() -> Generator:
+    db = local_session()
+    try:
+        yield db
+    finally:
+        db.close()

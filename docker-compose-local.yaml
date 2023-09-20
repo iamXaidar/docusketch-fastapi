@@ -4,7 +4,7 @@ services:
     container_name: "db"
     image: postgres:14.1-alpine
     restart: always
-    env_file: source/config/db.env
+    env_file: source/config/.env
     ports:
       - "5432:5432"
     networks:
