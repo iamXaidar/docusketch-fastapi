@@ -1,6 +1,6 @@
 # DocuSketch Fast Api Test Project
 
-To run this app in local machine you need pre-installed poetry and docker.
+To run this app on local machine you need pre-installed poetry and docker.
 ## Clone repository from GitHub
 - ```$ git clone https://github.com/iamkhaidarzakirov/DocuSketchTest_FastApi.git```
 - ```$ cd DocuSketchTest_FastApi ```
