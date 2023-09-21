@@ -1,11 +1,10 @@
-import psycopg2
-from sqlalchemy import create_engine
 from config import settings
-import pandas as pd
 import os
+from sqlalchemy import create_engine
+import pandas as pd
 
 
-# Utils
+# Utilities
 def import_to_psql(excel_table_path: str):
     """Quick function to import rows from file to db"""
     engine = create_engine(settings.POSTGRES_URL, echo=False)

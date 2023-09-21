@@ -1,7 +1,7 @@
 from api.items import schemas
 from db import models
 from sqlalchemy.orm import Session
-from typing import Dict, List, Type
+from typing import List, Type
 
 
 class ItemCRUD:
@@ -17,7 +17,8 @@ class ItemCRUD:
         return db_item
 
     def get_items(self, offset: int = 0, limit: int = 25) -> List[Type[models.Item]]:
-        return self.db.query(models.Item).order_by("item_id").offset(offset).limit(limit).all()
+        items = self.db.query(models.Item).order_by("id").offset(offset).limit(limit).all()
+        return items
 
     def detail_item(self, item_id: int) -> models.Item:
         return self.db.query(models.Item).get(item_id)
@@ -25,16 +26,16 @@ class ItemCRUD:
 
     def update_item(self, item_id: int, item: schemas.UpdateItem) -> models.Item:
         db_item = self.db.query(models.Item).get(item_id)
+
         if db_item.name is not None:
             db_item.name = item.name
-        self.db.commit()
+            self.db.commit()
         return db_item
 
-    def delete_item(self, item_id: int):
-        rows = self.db.query(models.Item).filter(models.Item.item_id == item_id).delete()
+    def delete_items(self, items: schemas.DeleteItems):
+        items = set(items.ids)
+        rows = self.db.query(models.Item).filter(models.Item.id.in_(items)).delete()
         self.db.commit()
-        return {"deleted rows": rows,
-                "item_id": item_id
+        return {"deleted rows count": rows,
+                "deleted item ids": items
                 }
-
-

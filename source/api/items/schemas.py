@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from db.models import Item
 from typing import List, Type
 
 
@@ -14,8 +13,12 @@ class CreateItem(OrmModeMixin):
     name: str
 
 
+class DeleteItems(OrmModeMixin):
+    ids: List[int]
+
+
 class ShowItem(OrmModeMixin):
-    item_id: int
+    id: int
     name: str
 
 

@@ -1,6 +1,5 @@
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.schema import Identity
 from sqlalchemy import Column, String, Integer
 
 
@@ -13,6 +12,6 @@ class Base(DeclarativeBase):
 class Item(Base):
     """The simplest models"""
     __tablename__ = "item"
-    item_id: Mapped[int] = mapped_column(Integer, Identity(start=1, cycle=True), primary_key=True, index=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String)
 
