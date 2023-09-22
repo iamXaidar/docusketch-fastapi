@@ -28,6 +28,7 @@ But I did not implement main web app by docker, because I supposed it is just te
 - ```$ cd DocuSketchTest_FastApi ```
 ## Install dependencies
 - ```$ poetry install```
+-  ```$ poetry shell```
 ## Create dotenv file with db and web credentials by example in .env.template
 - ```$ make create_dotenv```
 
