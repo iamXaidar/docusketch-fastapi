@@ -9,6 +9,18 @@ services:
       - "5432:5432"
     networks:
       - custom
+  test_db:
+    container_name: "test_db"
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=test_postgres
+      - POSTGRES_USER=test_postgres
+      - POSTGRES_PASSWORD=test_postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - custom
 
 networks:
   custom:

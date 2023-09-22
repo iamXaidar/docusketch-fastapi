@@ -14,6 +14,7 @@ from logs.log import file_logger, LogRoute
 from fastapi.responses import JSONResponse
 from starlette import status
 from starlette.exceptions import HTTPException as SHttpException
+from tests.items.handlers import tests_router
 
 
 # logging config before app starting
@@ -26,6 +27,7 @@ file_logger.info("Application is started...")
 # Routing settings
 main_router = APIRouter(route_class=LogRoute)
 main_router.include_router(items_router, prefix="/items", tags=["items"])
+main_router.include_router(tests_router, prefix="/tests", tags=["tests"])
 
 
 @app.exception_handler(SHttpException)

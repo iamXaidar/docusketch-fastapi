@@ -5,8 +5,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config("DEBUG")
 
-# DB
+# MAIN DB
 POSTGRES_URL = f"postgresql://{config('POSTGRES_USER')}:{config('POSTGRES_PASSWORD')}@0.0.0.0:5432/{config('POSTGRES_DB')}"
+# TEST DB
+TEST_POSTGRES_URL = f"postgresql://test_postgres:test_postgres@0.0.0.0:5433/test_postgres"
 
 # LOGGING
 logconfig = {
