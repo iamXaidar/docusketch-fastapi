@@ -6,6 +6,7 @@ import logging
 from typing import Callable
 
 
+# Contains logs entities
 class LogRoute(APIRoute):
     """Define custom routing class and add logging"""
     def get_route_handler(self) -> Callable:

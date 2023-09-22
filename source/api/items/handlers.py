@@ -4,7 +4,7 @@ from db.database import get_db
 from fastapi import Depends, Path, Body, Query, HTTPException
 from fastapi.requests import Request
 from fastapi.routing import APIRouter
-from logs.log import LogRoute, file_logger
+from logs.log import LogRoute
 from sqlalchemy.orm import Session
 from typing import Annotated
 
@@ -36,7 +36,7 @@ def get_items(
 
     items = crud.get_items(offset, limit)
     if not items:
-        return HTTPException(status_code=404, detail="Requested items do not exist...")
+        raise HTTPException(status_code=404, detail="Requested items do not exist...")
     return items
 
 
@@ -49,7 +49,7 @@ def detail_item(
     crud = ItemCRUD(db)
     item = crud.detail_item(item_id)
     if item is None:
-        return HTTPException(status_code=404, detail="Requested object does not exists...")
+        raise HTTPException(status_code=404, detail="Requested object does not exists...")
     return item
 
 
