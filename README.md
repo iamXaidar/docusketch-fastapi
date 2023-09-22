@@ -34,6 +34,7 @@ But I did not implement main web app by docker, because I supposed it is just te
 - ```$ make up```
 ## Make migrations
 - ```$ make init_db```
+- **Note**: If error raises (...port 5433 failed: server closed...), you need repeat the above command
 ## Import data to Postgresql server
 - ```$ make import```
 ## Start application
