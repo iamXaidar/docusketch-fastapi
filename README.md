@@ -1,8 +1,7 @@
 # DocuSketch Fast Api Test Project
 
 To run this app on local machine you need pre-installed poetry and docker.
-<<<<<<< HEAD
-=======
+
 ```
 api: package contains endpoints
 
@@ -23,7 +22,7 @@ test: pytest
 I used docker to build db server, I thought it is simpler than install and configure Postgres on local machine...
 But I did not implement main web app by docker, because I supposed it is just test project and there is no reason to...
 ```
->>>>>>> develop
+
 ## Clone repository from GitHub
 - ```$ git clone https://github.com/iamkhaidarzakirov/DocuSketchTest_FastApi.git```
 - ```$ cd DocuSketchTest_FastApi ```
