@@ -20,12 +20,12 @@ class ItemCRUD:
         items = self.db.query(models.Item).order_by("id").offset(offset).limit(limit).all()
         return items
 
-    def detail_item(self, item_id: int) -> models.Item:
-        return self.db.query(models.Item).get(item_id)
+    def detail_item(self, item_id: int) -> Type[models.Item] | None:
+        return self.db.get(models.Item, item_id)
         # return self.db.query(models.Item).filter(models.Item.item_id == item_id).first()  # ?
 
-    def update_item(self, item_id: int, item: schemas.UpdateItem) -> models.Item:
-        db_item = self.db.query(models.Item).get(item_id)
+    def update_item(self, item_id: int, item: schemas.UpdateItem) -> Type[models.Item] | None:
+        db_item = self.db.get(models.Item, item_id)
 
         if db_item.name is not None:
             db_item.name = item.name
